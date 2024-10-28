@@ -23,6 +23,8 @@ echo" Price for a pizza slice is \${$price}!<br>";
 echo" Online status: {$online}<br>";
 echo" Employed status: {$employed}<br>";
 
+
+
 echo" Ordered {$quantity} slices of {$food}";
 $total = $price * $quantity;
 echo" for a total of \${$total}!<br>";
