@@ -8,56 +8,73 @@
 </head>
 
 <body>
-    <form action="index.php" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br>
-
-        <input type="submit" name="login" value="Log in">
+    <form action="index.php" method="POST">
+        <input type="radio" name="payment" value="Visa">Visa<br>
+        <input type="radio" name="payment" value="MasterCard">MasterCard<br>
+        <input type="radio" name="payment" value="PayPal">PayPal<br>
+        <input type="submit" name="confirm" value="Confirm">
     </form>
 </body>
 
 </html>
 
+
 <?php
-// isset() returns TRUE if a variable is set - not null - true
-// empty() returns TRUE if a variable is empty string - not declared - false
 
+// if (isset($_POST['confirm'])) {
 
-// $username = "";
-
-// if (isset($username)) {
-//     echo "Variable is set";
-// } else {
-//     echo "Variable is not set";
-// }
-
-// echo "<br>";
-
-// if (empty($username)) {
-//     echo "Variable is empty";
-// } else {
-//     echo "Variable is not empty";
+//     if (isset($_POST['payment'])) {
+//         $credit = $_POST['payment'];
+//         echo $credit;
+//     } else {
+//         echo "Please select a payment method";
+//     }
 // }
 
 
-foreach ($_POST as $key => $value) {
-    echo $key . ": " . $value . "<br>";
-}
 
-echo "<br>";
+// if (isset($_POST['confirm'])) {
+//     $credit = null;
 
-if (isset($_POST["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+//     if (isset($_POST['payment'])) {
+//         $credit = $_POST['payment'];
+//     }
 
-    if (empty($username)) {
-        echo "Username is empty";
-    } elseif (empty($password)) {
-        echo "Password is empty";
-    } else {
-        echo "Hi {$username}";
+//     if ($credit == "Visa") {
+//         echo "You selected Visa";
+//     } else if ($credit == "MasterCard") {
+//         echo "You selected MasterCard";
+//     } else if ($credit == "PayPal") {
+//         echo "You selected PayPal";
+//     } else {
+//         echo "Please select a payment method";
+//     }
+// }
+
+
+if (isset($_POST['confirm'])) {
+
+    $credit = null;
+
+    if (isset($_POST['payment'])) {
+        $credit = $_POST['payment'];
+    }
+
+    switch ($credit) {
+        case "Visa":
+            echo "You selected Visa";
+            break;
+        case "MasterCard":
+            echo "You selected MasterCard";
+            break;
+        case "PayPal":
+            echo "You selected PayPal";
+            break;
+        default:
+            echo "Please select a payment method";
+            break;
     }
 }
+
+
+?>
