@@ -1,54 +1,47 @@
 <?php
-$temp = 132;
-$cloudy = true;
-$age = 28;
-$citizen = true;
-$child = false;
-$senior = false;
-$ticket_price = null;
 
-// if($temp >= 0 && $temp <= 30 ){
-//     echo"The temperature is normal";
-// }
-// else{
-//     echo"The temperature is not normal";
-// }
+$grade = "B";
+$date = date("l");
 
-// if($temp < 0 || $temp > 30 ){
-//     echo"The temperature is bad";
-// }
-// else{
-//     echo"The temperature is good";
+// $date = "asdad";
+
+// switch ($grade) {
+//     case "A":
+//         echo "Excellent";
+//         break;
+//     case "B":
+//         echo "Very Good";
+//         break;
+//     case "C":
+//         echo "Good";
+//         break;
+//     default:
+//         echo "{$grade} is not a valid grade";
 // }
 
-// if(!$cloudy){
-//     echo"It's sunny";
-// }
-// else {
-//     echo "It's cloudy";
-// }
-
-// if($age >= 18 && $citizen){
-//     echo"You can vote";
-// }
-// else{
-//     echo"You can't vote";
-// }
-
-// if(!$age >= 18 || !$citizen){
-//     echo"You cannot vote";
-// }
-// else{
-//     echo"You can vote";
-// }
-
-if($child || $senior ){
-    $ticket = 10;
+switch($date){
+    case "Monday":
+        echo "Happy Monday";
+        break;
+    case "Tuesday":
+        echo "Happy Tuesday";
+        break;
+    case "Wednesday":
+        echo "Happy Wednesday";
+        break;
+    case "Thursday":
+        echo "Happy Thursday";
+        break;
+    case "Friday":
+        echo "Happy Friday";
+        break;
+    case "Saturday":
+        echo "Happy Saturday";
+        break;
+    case "Sunday":
+        echo "Happy Sunday";
+        break;
+    default:
+        echo "{$date} is not a valid date";
 }
-else{
-    $ticket = 15;
-}
-echo"Tickets cost \${$ticket}";
 ?>
-
-<!-- const ticket = (child || senior) ? 10 : 15;  js example  -->
