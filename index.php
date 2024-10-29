@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <form action="index.php" method="POST">
-        <input type="submit" name="stop" value="stop">
-    </form>
-</body>
-
-</html>
-
 <?php
-$seconds = 0;
-$running = true;
+// let foods = ["apple", "banana", "orange", "mango", "pineapple"] for js;
 
-while ($running) {
-    if (isset($_POST['stop'])) {
-        $running = false;
-    } else {
-        // wait 1 sec
-        $seconds++;
-        echo $seconds . "\n";
-        sleep(1);
-    }
+$foods = array("apple", "banana", "orange", "mango", "pineapple");
+// echo $foods[2];
+
+// $foods[0] = "grapes";
+// array_push($foods, "grapes"); // add element(s) at the end
+// array_pop($foods); // remove element(s) at the end
+// array_shift($foods); // remove element(s) at the start
+// array_unshift($foods, "grapes"); // add element(s) at the start
+$reversed_foods = array_reverse($foods);
+
+echo count($foods);
+
+echo "<br>";
+
+foreach ($reversed_foods as $food) {
+    echo $food . "<br>";
+}
+
+echo "<br>";
+
+foreach ($foods as $food) {
+    echo $food . "<br>";
 }
