@@ -1,26 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="index.php" method="post">
+        <label for="country">Enter a country</label>
+        <input type="text" name="country"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+
+</html>
+
 <?php
-// let foods = ["apple", "banana", "orange", "mango", "pineapple"] for js;
+// key => value
+// let capitals = {"Spain": "Madrid", "Germany": "Berlin", "Netherlands": "Amsterdam", "Greece": "Athens", "Italy": "Rome"} as object in js
+// capitals = {"Spain": "Madrid", "Germany": "Berlin", "Netherlands": "Amsterdam", "Greece": "Athens", "Italy": "Rome"} as dictionary in python
 
-$foods = array("apple", "banana", "orange", "mango", "pineapple");
-// echo $foods[2];
+$capitals = array(
+    "Spain" => "Madrid",
+    "Germany" => "Berlin",
+    "Netherlands" => "Amsterdam",
+    "Greece" => "Athens",
+    "Italy" => "Rome"
+);
 
-// $foods[0] = "grapes";
-// array_push($foods, "grapes"); // add element(s) at the end
-// array_pop($foods); // remove element(s) at the end
-// array_shift($foods); // remove element(s) at the start
-// array_unshift($foods, "grapes"); // add element(s) at the start
-$reversed_foods = array_reverse($foods);
+$capital = $capitals[$_POST["country"]];
 
-echo count($foods);
 
-echo "<br>";
+echo "The capital is {$capital}.";
 
-foreach ($reversed_foods as $food) {
-    echo $food . "<br>";
-}
+// -----------------------------------------------------------------------------
 
-echo "<br>";
+// $capitals["Spain"] = "Barcelona";
+// $capitals["China"] = "Beijing";
+// array_pop($capitals);
+// array_shift($capitals);
 
-foreach ($foods as $food) {
-    echo $food . "<br>";
-}
+// $keys =  array_keys($capitals);
+// $values = array_values($capitals);
+
+
+// foreach ($capitals as $key => $value) {
+//     echo "The capital of " . $key . " is " . $value . "<br>";
+// }
+
+// echo "<br>";
+
+// foreach ($keys as $key) {
+//     echo "The capital of " . $key . " is " . $capitals[$key] . "<br>";
+// }
+
+// echo "<br>";
+
+// foreach ($values as $value) {
+//     echo $value . "<br>";
+// }
+
+// echo "<br>";
+
+// $capitals = array_flip($capitals);
+
+// foreach ($capitals as $key => $value) {
+//     echo $key . "is the capital of " . $value . "<br>";
+// }
+
+// echo "<br>";
+
+// $capitals = array_reverse($capitals);
+
+// foreach ($capitals as $key => $value) {
+//     echo $key . "is the capital of " . $value . "<br>";
+// }
+
+// echo "<br>";
+
+// echo "There are " . count($capitals) . " countries inside the array.<br>";
