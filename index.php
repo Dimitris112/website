@@ -9,34 +9,23 @@
 
 <body>
     <form action="index.php" method="POST">
-        <!-- <label for="number">Enter a number to count to:</label><br> -->
-        <label for="number">Enter a number to count down from:</label><br>
-        <input type="number" name="number"><br>
-        <input type="submit" value="Start">
+        <input type="submit" name="stop" value="stop">
     </form>
 </body>
 
 </html>
 
-
 <?php
-// for($i =2;$i <=30;$i+=2){
-//     echo $i . "\n";
-// }
+$seconds = 0;
+$running = true;
 
-// for($i = 10; $i > 0; $i--){
-//     echo $i . "\n";
-// }
-
-
-
-$counter = $_POST["counter"];
-// // for ($i = 1; $i <= $counter; $i++) {
-// //     echo $i . "<br>";
-// // }
-
-for ($i = $counter; $i > 0; $i--) {
-    echo $i . "<br>";
+while ($running) {
+    if (isset($_POST['stop'])) {
+        $running = false;
+    } else {
+        // wait 1 sec
+        $seconds++;
+        echo $seconds . "\n";
+        sleep(1);
+    }
 }
-
-?>
