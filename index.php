@@ -1,31 +1,54 @@
 <?php
-// $age = 0;
-// if ($age >=18){
-//     echo "You may enter";
+$temp = 132;
+$cloudy = true;
+$age = 28;
+$citizen = true;
+$child = false;
+$senior = false;
+$ticket_price = null;
+
+// if($temp >= 0 && $temp <= 30 ){
+//     echo"The temperature is normal";
 // }
-// elseif($age == 0){
-//     echo" Bruh";
+// else{
+//     echo"The temperature is not normal";
 // }
-// elseif($age >= 100){
-//     echo "What?";
+
+// if($temp < 0 || $temp > 30 ){
+//     echo"The temperature is bad";
+// }
+// else{
+//     echo"The temperature is good";
+// }
+
+// if(!$cloudy){
+//     echo"It's sunny";
 // }
 // else {
-//     echo "You shall not pass";
+//     echo "It's cloudy";
 // }
 
+// if($age >= 18 && $citizen){
+//     echo"You can vote";
+// }
+// else{
+//     echo"You can't vote";
+// }
 
-$hours = 42;
-$rate = 15;
-$weekly_pay = null;   
+// if(!$age >= 18 || !$citizen){
+//     echo"You cannot vote";
+// }
+// else{
+//     echo"You can vote";
+// }
 
-if($hours <= 0){
-    $weekly_pay = 0;
-}
-elseif($hours <= 40){
-    $weekly_pay = $hours * $rate;
+if($child || $senior ){
+    $ticket = 10;
 }
 else{
-    $weekly_pay = ($rate * 40) + (($hours - 40) * ($rate * 1.5));
+    $ticket = 15;
 }
-echo "Made \${$weekly_pay} this week";
+echo"Tickets cost \${$ticket}";
 ?>
+
+<!-- const ticket = (child || senior) ? 10 : 15;  js example  -->
