@@ -9,76 +9,55 @@
 
 <body>
     <form action="index.php" method="post">
-        <label for="country">Enter a country</label>
-        <input type="text" name="country"><br>
-        <input type="submit" value="Submit">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+
+        <input type="submit" name="login" value="Log in">
     </form>
 </body>
-
 
 </html>
 
 <?php
-// key => value
-// let capitals = {"Spain": "Madrid", "Germany": "Berlin", "Netherlands": "Amsterdam", "Greece": "Athens", "Italy": "Rome"} as object in js
-// capitals = {"Spain": "Madrid", "Germany": "Berlin", "Netherlands": "Amsterdam", "Greece": "Athens", "Italy": "Rome"} as dictionary in python
-
-$capitals = array(
-    "Spain" => "Madrid",
-    "Germany" => "Berlin",
-    "Netherlands" => "Amsterdam",
-    "Greece" => "Athens",
-    "Italy" => "Rome"
-);
-
-$capital = $capitals[$_POST["country"]];
+// isset() returns TRUE if a variable is set - not null - true
+// empty() returns TRUE if a variable is empty string - not declared - false
 
 
-echo "The capital is {$capital}.";
+// $username = "";
 
-// -----------------------------------------------------------------------------
-
-// $capitals["Spain"] = "Barcelona";
-// $capitals["China"] = "Beijing";
-// array_pop($capitals);
-// array_shift($capitals);
-
-// $keys =  array_keys($capitals);
-// $values = array_values($capitals);
-
-
-// foreach ($capitals as $key => $value) {
-//     echo "The capital of " . $key . " is " . $value . "<br>";
+// if (isset($username)) {
+//     echo "Variable is set";
+// } else {
+//     echo "Variable is not set";
 // }
 
 // echo "<br>";
 
-// foreach ($keys as $key) {
-//     echo "The capital of " . $key . " is " . $capitals[$key] . "<br>";
+// if (empty($username)) {
+//     echo "Variable is empty";
+// } else {
+//     echo "Variable is not empty";
 // }
 
-// echo "<br>";
 
-// foreach ($values as $value) {
-//     echo $value . "<br>";
-// }
+foreach ($_POST as $key => $value) {
+    echo $key . ": " . $value . "<br>";
+}
 
-// echo "<br>";
+echo "<br>";
 
-// $capitals = array_flip($capitals);
+if (isset($_POST["login"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-// foreach ($capitals as $key => $value) {
-//     echo $key . "is the capital of " . $value . "<br>";
-// }
-
-// echo "<br>";
-
-// $capitals = array_reverse($capitals);
-
-// foreach ($capitals as $key => $value) {
-//     echo $key . "is the capital of " . $value . "<br>";
-// }
-
-// echo "<br>";
-
-// echo "There are " . count($capitals) . " countries inside the array.<br>";
+    if (empty($username)) {
+        echo "Username is empty";
+    } elseif (empty($password)) {
+        echo "Password is empty";
+    } else {
+        echo "Hi {$username}";
+    }
+}
