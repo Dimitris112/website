@@ -8,73 +8,50 @@
 </head>
 
 <body>
+    <!-- <form action="index.php" method="POST">
+        <input type="checkbox" name="pizza" value="Pizza">Pizza<br>
+        <input type="checkbox" name="burger" value="Burger">Burger<br>
+        <input type="checkbox" name="fries" value="Fries">Fries<br>
+        <input type="checkbox" name="hotdog" value="Hotdog">Hotdog<br>
+        <input type="submit" name="submit" value="Submit">
+    </form> -->
+
     <form action="index.php" method="POST">
-        <input type="radio" name="payment" value="Visa">Visa<br>
-        <input type="radio" name="payment" value="MasterCard">MasterCard<br>
-        <input type="radio" name="payment" value="PayPal">PayPal<br>
-        <input type="submit" name="confirm" value="Confirm">
+        <input type="checkbox" name="foods[]" value="Pizza">Pizza<br>
+        <input type="checkbox" name="foods[]" value="Burger">Burger<br>
+        <input type="checkbox" name="foods[]" value="Fries">Fries<br>
+        <input type="checkbox" name="foods[]" value="Hotdog">Hotdog<br>
+        <input type="submit" name="submit" value="Submit">
     </form>
 </body>
 
 </html>
 
-
 <?php
+// if (isset($_POST['submit'])) {
+//     if (isset($_POST['pizza'])) {
+//         echo "Like pizza <br>";
+//     }
+//     if (isset($_POST['burger'])) {
+//         echo "Like burger <br>";
+//     }
+//     if (isset($_POST['fries'])) {
+//         echo "Like fries <br>";
+//     }
+//     if (isset($_POST['hotdog'])) {
+//         echo "Like hotdog <br>";
+//     }
 
-// if (isset($_POST['confirm'])) {
-
-//     if (isset($_POST['payment'])) {
-//         $credit = $_POST['payment'];
-//         echo $credit;
-//     } else {
-//         echo "Please select a payment method";
+//     if (empty($_POST['pizza']) && empty($_POST['burger']) && empty($_POST['fries']) && empty($_POST['hotdog'])) {
+//         echo "Nothing selected";
 //     }
 // }
 
+if (isset($_POST['submit'])) {
+    $foods = $_POST['foods'];
 
-
-// if (isset($_POST['confirm'])) {
-//     $credit = null;
-
-//     if (isset($_POST['payment'])) {
-//         $credit = $_POST['payment'];
-//     }
-
-//     if ($credit == "Visa") {
-//         echo "You selected Visa";
-//     } else if ($credit == "MasterCard") {
-//         echo "You selected MasterCard";
-//     } else if ($credit == "PayPal") {
-//         echo "You selected PayPal";
-//     } else {
-//         echo "Please select a payment method";
-//     }
-// }
-
-
-if (isset($_POST['confirm'])) {
-
-    $credit = null;
-
-    if (isset($_POST['payment'])) {
-        $credit = $_POST['payment'];
-    }
-
-    switch ($credit) {
-        case "Visa":
-            echo "You selected Visa";
-            break;
-        case "MasterCard":
-            echo "You selected MasterCard";
-            break;
-        case "PayPal":
-            echo "You selected PayPal";
-            break;
-        default:
-            echo "Please select a payment method";
-            break;
+    foreach ($foods as $food) {
+        echo $food . '<br>';
     }
 }
-
-
 ?>
