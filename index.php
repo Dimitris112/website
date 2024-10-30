@@ -1,26 +1,19 @@
 <?php
-// include() - copies the contents of a file into the current PHP script / sections of the website become reusable - changes only need to be made in 1 place
-// similar to 'base.html' - {% %} block-endblock tags / extends used in Django --- export default / import components - functions in React
-include("header.html");
 
-?>
+// cookie handling - setcookie("key", "value", time() + (86400 * 7), "/"); // 86400 = 1 day in seconds - stored for 1 week - "/" for default filepath
+// F12 -> applications -> cookies = non sensitive data
+// for example delete cookies with "- 0" on seconds
 
-<!DOCTYPE html>
-<html lang="en">
+setcookie("fav_food", "burger", time() + (86400 * 7), "/");
+setcookie("fav_drink", "coffee", time() + (86400 * 4), "/");
+setcookie("fav_desert", "cake", time() + (86400 * 3), "/");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
+// foreach ($_COOKIE as $key => $value) {
+//     echo $key . ": " . $value . "<br>";
+// }
 
-<body>
-    This is the Home page <br>
-    Stuff goes here
-</body>
-
-</html>
-
-<?php
-include("footer.html");
-?>
+if (isset($_COOKIE["fav_food"])) {
+    echo "Buy some {$_COOKIE["fav_food"]}<br>";
+} else {
+    echo "Dunno your fav food<br>";
+}
