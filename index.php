@@ -1,10 +1,3 @@
-<?php
-// session = Super Global Variable (SGB) store info on a user to be used across multiple pages / session-id (ex. login credentials)
-// required to have "session_start()" in the first line to start session
-
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,37 +8,28 @@ session_start();
 </head>
 
 <body>
-    <form action="index.php" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username"><br>
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password"><br>
-
-        <input type="submit" name="login" value="Login">
+    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+        username:<br>
+        <input type="text" name="username">
+        <br>
+        <input type="submit" value="Submit">
     </form>
 </body>
 
 </html>
 
 <?php
-// $_SESSION['username'] = 'admin';
-// $_SESSION['password'] = '12345';
+// htmlspecialchars - converts special characters to HTML entities - secured against CSRF attacks
 
-// echo $_SESSION['username'] . '<br>';
-// echo $_SESSION['password'] . '<br>';
+// $_SERVER = super global variable (SGB) contains information about headers, paths, and more about the request and the response
+// "key" = "value"
+// Important stuff -> PHP_SELF - current file name / REQUEST_METHOD - current request method
 
-if (isset($_POST['login'])) {
-    $_SESSION['username'] = $_POST['username']; // could use filters
-    $_SESSION['password'] = $_POST['password']; // same
+// foreach ($_SERVER as $key => $value) {
+//     echo $key . " = " . $value . "<br>";
+// }
 
-    if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
-        // echo 'Welcome ' . $_SESSION['username'] . '<br>';
-        // echo 'Your password is ' . $_SESSION['password'] . '<br>';
-
-        header('Location: home.php'); // redirect
-    } else {
-        echo "Missing username / password <br>";
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    echo $username;
 }
-?>
