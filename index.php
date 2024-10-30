@@ -1,19 +1,51 @@
 <?php
+// session = Super Global Variable (SGB) store info on a user to be used across multiple pages / session-id (ex. login credentials)
+// required to have "session_start()" in the first line to start session
 
-// cookie handling - setcookie("key", "value", time() + (86400 * 7), "/"); // 86400 = 1 day in seconds - stored for 1 week - "/" for default filepath
-// F12 -> applications -> cookies = non sensitive data
-// for example delete cookies with "- 0" on seconds
+session_start();
+?>
 
-setcookie("fav_food", "burger", time() + (86400 * 7), "/");
-setcookie("fav_drink", "coffee", time() + (86400 * 4), "/");
-setcookie("fav_desert", "cake", time() + (86400 * 3), "/");
+<!DOCTYPE html>
+<html lang="en">
 
-// foreach ($_COOKIE as $key => $value) {
-//     echo $key . ": " . $value . "<br>";
-// }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-if (isset($_COOKIE["fav_food"])) {
-    echo "Buy some {$_COOKIE["fav_food"]}<br>";
-} else {
-    echo "Dunno your fav food<br>";
+<body>
+    <form action="index.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password"><br>
+
+        <input type="submit" name="login" value="Login">
+    </form>
+</body>
+
+</html>
+
+<?php
+// $_SESSION['username'] = 'admin';
+// $_SESSION['password'] = '12345';
+
+// echo $_SESSION['username'] . '<br>';
+// echo $_SESSION['password'] . '<br>';
+
+if (isset($_POST['login'])) {
+    $_SESSION['username'] = $_POST['username']; // could use filters
+    $_SESSION['password'] = $_POST['password']; // same
+
+    if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
+        // echo 'Welcome ' . $_SESSION['username'] . '<br>';
+        // echo 'Your password is ' . $_SESSION['password'] . '<br>';
+
+        header('Location: home.php'); // redirect
+    } else {
+        echo "Missing username / password <br>";
+    }
 }
+?>
