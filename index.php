@@ -1,35 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        username:<br>
-        <input type="text" name="username">
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-</body>
-
-</html>
-
 <?php
-// htmlspecialchars - converts special characters to HTML entities - secured against CSRF attacks
+// hashing -> transform sensitive data into letters - numbers - symbols via mathematical process (like encryption) - Hides original data from 3rd parties
+// password_verify(string $password, string $hash): bool - check if password is correct
+$password = "pass123";
 
-// $_SERVER = super global variable (SGB) contains information about headers, paths, and more about the request and the response
-// "key" = "value"
-// Important stuff -> PHP_SELF - current file name / REQUEST_METHOD - current request method
+$hash = password_hash($password, PASSWORD_DEFAULT);
 
-// foreach ($_SERVER as $key => $value) {
-//     echo $key . " = " . $value . "<br>";
-// }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    echo $username;
+// required "pass123" to complete - else always will show "Password is wrong" (burger123)
+if (password_verify("burger123", $hash)) {
+    echo "Password is correct";
+} else {
+    echo "Password is wrong";
 }
