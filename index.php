@@ -1,18 +1,24 @@
 <?php
+// database name -> businessdb
+// table name -> users
+// column names -> user, password
+// first user -> John, j12345 -- password not hashed
+// second user -> Dim, password is hashed - PASSWORD_DEFAULT function
+
 include "database.php";
-?>
 
-<!DOCTYPE html>
-<html lang="en">
+$username = 'Dim';
+$password = 'rock3';
+$hash = password_hash($password, PASSWORD_DEFAULT);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+$sql = "INSERT INTO users (user, password)
+        VALUES ('$username', '$hash')";
 
-<body>
-    Hello
-</body>
+try {
+    mysqli_query($conn, $sql);
+    echo "User created";
+} catch (mysqli_sql_exception) {
+    echo "Could not register user";
+}
 
-</html>
+mysqli_close($conn);
