@@ -9,16 +9,18 @@
 
 <body>
     <?php
-    $brand = "BMW";
-    $color = "Blue";
 
-    function getCarInfo($brand, $color)
-    {
-        return "Brand: " . $brand . " Color: " . $color;
-    }
+    require_once 'Classes/Car.php';
 
-    echo getCarInfo($brand, $color);
+    $car1 = new Car("BMW", "blue");
+    // echo $car1->newVehicleType;
+    // echo $car1->setBrand("Mercedes");
+    // echo $car1->getBrand();
 
+    $car1->setColor("red");
+    // echo $car1->setColor("dasdasdsa"); wont be accepted since it's not in the list - stay as "blue"
+    echo $car1->setColor("black");
+    echo $car1->getColor();
     ?>
 </body>
 

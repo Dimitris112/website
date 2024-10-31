@@ -2,33 +2,53 @@
 
 class Car
 {
-    // protected - can be accessed in child classes
-    // private - can be accessed in the same class
-    // public - can be accessed anywhere
-
-    // Properties - Methods - Fields
+    // Properties - Fields
     private $brand;
     private $color;
-    private $vehicleType = "car";
+    // private $vehicleType = "car";
+    // public $newVehicleType = "cars";
 
-    public $vehicleNewType = "car";
-    public $brandNew;
-
-    // Constructor "method" - called when the object is created
-    public function __construct($brand, $color = "none") // none as default value - placeholder
+    // Constructor
+    public function __construct($brand, $color)
     {
-        // $this - refers to the current object - like "this" in js / "self" in python
-        // this.brand = brand; in js
-        // self.brand = brand in python
-
         $this->brand = $brand;
         $this->color = $color;
     }
+
+
+
+
+
+    // Getter - Setter methods
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
+    }
+
+
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    public function setColor($color)
+    {
+        $allowedColors = ["red", "blue", "green", "yellow", "black", "white"];
+        if (in_array($color, $allowedColors)) {
+            $this->color = $color;
+        }
+    }
+
+
+
+    // Method
+    public function getCarInfo()
+    {
+        return "Brand: " . $this->brand . " Color: " . $this->color;
+    }
 }
-
-$car1 = new Car("Opel"); // takes default value "none" for color
-$car2 = new Car("Volvo", "red");
-
-$car3  = new Car("Porsche", "blue");
-echo $car3->vehicleNewType; // shows "car"
-echo $car3->brandNew; // shows "Porsche"
