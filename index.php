@@ -1,13 +1,18 @@
 <?php
-// hashing -> transform sensitive data into letters - numbers - symbols via mathematical process (like encryption) - Hides original data from 3rd parties
-// password_verify(string $password, string $hash): bool - check if password is correct
-$password = "pass123";
+include "database.php";
+?>
 
-$hash = password_hash($password, PASSWORD_DEFAULT);
+<!DOCTYPE html>
+<html lang="en">
 
-// required "pass123" to complete - else always will show "Password is wrong" (burger123)
-if (password_verify("burger123", $hash)) {
-    echo "Password is correct";
-} else {
-    echo "Password is wrong";
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Hello
+</body>
+
+</html>
