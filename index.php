@@ -1,24 +1,22 @@
 <?php
-// database name -> businessdb
-// table name -> users
-// column names -> user, password
-// first user -> John, j12345 -- password not hashed
-// second user -> Dim, password is hashed - PASSWORD_DEFAULT function
-
 include "database.php";
 
-$username = 'Dim';
-$password = 'rock3';
-$hash = password_hash($password, PASSWORD_DEFAULT);
+// mysqli_fetch_assoc -> fetch row as an array (associative array)
 
-$sql = "INSERT INTO users (user, password)
-        VALUES ('$username', '$hash')";
+// $sql = "SELECT * FROM users WHERE user = 'John'";
 
-try {
-    mysqli_query($conn, $sql);
-    echo "User created";
-} catch (mysqli_sql_exception) {
-    echo "Could not register user";
+$sql = "SELECT * FROM users";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo $row['id'] . "<br>";
+        echo $row['user'] . "<br>";
+        // echo $row['password'] . "<br>";
+        echo $row['reg_date'] . "<br> <br>";
+    };
+} else {
+    echo "No results";
 }
 
 mysqli_close($conn);
